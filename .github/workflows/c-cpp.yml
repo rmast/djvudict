@@ -23,7 +23,7 @@ jobs:
       run: |
         cd /tmp
         git clone https://github.com/rmast/minidjvu-mod.git
-        git clone https://github.com/rmast/djvudict
+        git clone https://github.com/rmast/djvudict.git
         cd ./minidjvu-mod
         cp ../djvudict/tools/* ./tools/
         git apply ../djvudict/changes.diff
