@@ -16,7 +16,7 @@ jobs:
 
     # Install gettext package
     - name: Install gettext
-      run: sudo apt-get install -y gettext
+      run: sudo apt-get install -y gettext autopoint
 
     # Patching onto minidjvu-mod according to provided steps
     - name: Setup minidjvu-mod with djvudict
