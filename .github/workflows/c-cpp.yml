@@ -1,0 +1,47 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    # Patching onto minidjvu-mod according to provided steps
+    - name: Setup minidjvu-mod with djvudict
+      run: |
+        cd /tmp
+        git clone https://github.com/trufanov-nok/minidjvu-mod.git
+        git clone https://github.com/trufanov-nok/djvudict
+        cd ./minidjvu-mod
+        cp ../djvudict/tools/* ./tools/
+        git apply ../djvudict/changes.diff
+        autoreconf --install
+        ./configure
+        make
+
+    # Build djvudict
+    - name: Build djvudict
+      run: |
+        cd /tmp/djvudict
+        ./configure
+        make
+
+    # Run tests
+    - name: Run tests
+      run: |
+        cd /tmp/djvudict
+        make check
+
+    # Run distcheck
+    - name: Run distcheck
+      run: |
+        cd /tmp/djvudict
+        make distcheck
