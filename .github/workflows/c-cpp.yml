@@ -22,8 +22,8 @@ jobs:
     - name: Setup minidjvu-mod with djvudict
       run: |
         cd /tmp
-        git clone https://github.com/trufanov-nok/minidjvu-mod.git
-        git clone https://github.com/trufanov-nok/djvudict
+        git clone https://github.com/rmast/minidjvu-mod.git
+        git clone https://github.com/rmast/djvudict
         cd ./minidjvu-mod
         cp ../djvudict/tools/* ./tools/
         git apply ../djvudict/changes.diff
@@ -31,8 +31,8 @@ jobs:
         ./configure
         make
 
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: djvudict
-        path: /tmp/minidjvu-mod  # Adjust the path to match your actual artifacts
+#    - name: Upload Artifacts
+#      uses: actions/upload-artifact@v2
+#      with:
+#        name: djvudict
+#        path: /tmp/minidjvu-mod  # Adjust the path to match your actual artifacts
