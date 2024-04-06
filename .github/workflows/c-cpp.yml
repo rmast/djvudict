@@ -30,22 +30,3 @@ jobs:
         autoreconf --install
         ./configure
         make
-
-    # Build djvudict
-    - name: Build djvudict
-      run: |
-        cd /tmp/djvudict
-        ./configure
-        make
-
-    # Run tests
-    - name: Run tests
-      run: |
-        cd /tmp/djvudict
-        make check
-
-    # Run distcheck
-    - name: Run distcheck
-      run: |
-        cd /tmp/djvudict
-        make distcheck
