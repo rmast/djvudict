@@ -30,3 +30,9 @@ jobs:
         autoreconf --install
         ./configure
         make
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: djvudict
+        path: /tmp/minidjvu-mod  # Adjust the path to match your actual artifacts
